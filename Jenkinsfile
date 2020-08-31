@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                sh "docker build -t='phuckhang190/selenium-docker' ."
+                sh "docker build -t='phuckhang190/selenium-docker:${BUILD_NUMBER}' ."
             }
         }
         stage('Push Image') {
@@ -20,7 +20,6 @@ pipeline {
                     //sh
 			        sh "docker login --username=${user} --password=${pass}"
 			        sh "docker push phuckhang190/selenium-docker:${BUILD_NUMBER}"
-				sh "docker push phuckhang190/selenium-docker:latest"
 			    }                           
             }
         }
