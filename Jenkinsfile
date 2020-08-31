@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                sh "docker build -t='khang/selenium-docker' ."
+                sh "docker build -t='phuckhang190/selenium-docker' ."
             }
         }
         stage('Push Image') {
@@ -19,7 +19,7 @@ pipeline {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
                     //sh
 			        sh "docker login --username=${user} --password=${pass}"
-			        sh "docker push khang/selenium-docker:latest"
+			        sh "docker push phuckhang190/selenium-docker:latest"
 			    }                           
             }
         }
